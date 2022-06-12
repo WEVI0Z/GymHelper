@@ -1,0 +1,32 @@
+unit Unit1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Xml.xmldom, Xml.XMLIntf,
+  Xml.XMLDoc;
+
+type
+  TLogin = class(TForm)
+    UserName: TEdit;
+    Password: TEdit;
+    CreateNewUser: TButton;
+    EnterTheProfile: TButton;
+    UserNameLabel: TLabel;
+    PasswordLabel: TLabel;
+    XMLDocument1: TXMLDocument;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Login: TLogin;
+
+implementation
+
+{$R *.dfm}
+
+end.

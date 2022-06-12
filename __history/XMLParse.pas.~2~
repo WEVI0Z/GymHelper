@@ -1,0 +1,16 @@
+unit XMLParse;
+
+interface
+
+uses
+  Xml.xmldom, Xml.XMLIntf, Xml.XMLDoc;
+
+var
+  users: IXMLNodeList;
+
+implementation
+  procedure getUsers();
+  begin
+
+  end;
+end.
