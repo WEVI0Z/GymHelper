@@ -1,19 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899.12.30 00:00:00.000.675,D:\Programming Projects\Курсач\WorkOut\Unit1.dfm=C:\Users\wevio\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.632,D:\Programming Projects\Курсач\WorkOut\XMLParse.pas=</Transaction>
     <Transaction>1899.12.30 00:00:00.000.039,D:\Programming Projects\Курсач\WorkOut\Project1.dproj=C:\Users\wevio\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
     <Transaction>1899.12.30 00:00:00.000.772,D:\Programming Projects\Курсач\WorkOut\Authorization.pas=D:\Programming Projects\Курсач\WorkOut\Unit1.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.772,D:\Programming Projects\Курсач\WorkOut\Authorization.dfm=D:\Programming Projects\Курсач\WorkOut\Unit1.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.632,D:\Programming Projects\Курсач\WorkOut\XMLParse.pas=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.675,D:\Programming Projects\Курсач\WorkOut\Unit1.dfm=C:\Users\wevio\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
     <Transaction>1899.12.30 00:00:00.000.366,D:\Programming Projects\Курсач\WorkOut\Unit1.dfm=D:\Programming Projects\Курсач\WorkOut\MainMenu.dfm</Transaction>
     <Transaction>1899.12.30 00:00:00.000.037,=C:\Users\wevio\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.128,D:\Programming Projects\Курсач\WorkOut\Unit1.pas=D:\Programming Projects\Курсач\WorkOut\XMLParse.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.842,=D:\Programming Projects\Курсач\WorkOut\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.675,D:\Programming Projects\Курсач\WorkOut\Unit1.pas=C:\Users\wevio\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.170,=C:\Users\wevio\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.366,D:\Programming Projects\Курсач\WorkOut\Unit1.pas=D:\Programming Projects\Курсач\WorkOut\MainMenu.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.981,=D:\Programming Projects\Курсач\WorkOut\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.128,D:\Programming Projects\Курсач\WorkOut\Unit1.pas=D:\Programming Projects\Курсач\WorkOut\XMLParse.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.366,D:\Programming Projects\Курсач\WorkOut\Unit1.pas=D:\Programming Projects\Курсач\WorkOut\MainMenu.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.170,=C:\Users\wevio\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.675,D:\Programming Projects\Курсач\WorkOut\Unit1.pas=C:\Users\wevio\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.842,=D:\Programming Projects\Курсач\WorkOut\Unit1.pas</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="MainMenu.pas"/>
