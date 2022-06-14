@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xdb="http://www.borland.com/schemas/delphi/10.0/XMLDataBinding">
+  <xs:element name="main" type="mainType"/>
+  <xs:complexType name="mainType"><xs:annotation>
+      <xs:appinfo xdb:docElement="main"/>
+    </xs:annotation>
+    <sequence xmlns="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="exercise" type="exerciseType"/>
+    </sequence>
+  </xs:complexType>
+  <xs:complexType name="exerciseType">
+    <sequence xmlns="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="description" type="xs:string"/>
+      <xs:element name="isweighted" type="xs:string"/>
+    </sequence>
+  </xs:complexType>
+</xs:schema>

@@ -107,6 +107,7 @@
         <DCCReference Include="Authorization.pas">
             <Form>Login</Form>
         </DCCReference>
+        <DCCReference Include="defaultexercises.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

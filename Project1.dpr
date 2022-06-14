@@ -5,7 +5,8 @@ uses
   MainMenu in 'MainMenu.pas' {Menu},
   Vcl.Themes,
   Vcl.Styles,
-  Authorization in 'Authorization.pas' {Login};
+  Authorization in 'Authorization.pas' {Login},
+  defaultexercises in 'defaultexercises.pas';
 
 {$R *.res}
 

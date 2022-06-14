@@ -7,6 +7,11 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
 
 type
+  TExercise = record
+    Name: String;
+    Description: String;
+    IsWeighted: boolean;
+  end;
   TMenu = class(TForm)
     Login: TButton;
     LoginCautionMessage: TLabel;
@@ -24,6 +29,7 @@ type
 
 var
   Menu: TMenu;
+  defaultExercises: array of TExercise;
 
 implementation
 

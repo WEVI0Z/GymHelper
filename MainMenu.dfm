@@ -11,6 +11,7 @@ object Menu: TMenu
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesktopCenter
   PixelsPerInch = 96
   TextHeight = 13
   object LoginCautionMessage: TLabel
@@ -38,38 +39,38 @@ object Menu: TMenu
     OnClick = LoginClick
   end
   object EnterTheTraining: TButton
-    Left = 104
+    Left = 64
     Top = 48
-    Width = 75
+    Width = 153
     Height = 25
-    Caption = 'EnterTheTraining'
+    Caption = #1047#1072#1087#1080#1089#1100' '#1090#1088#1077#1085#1080#1088#1086#1074#1086#1082
     Enabled = False
     TabOrder = 1
   end
   object CreateNewTraining: TButton
-    Left = 104
+    Left = 64
     Top = 79
-    Width = 75
+    Width = 153
     Height = 25
-    Caption = 'CreateNewTraining'
+    Caption = #1052#1077#1085#1077#1076#1078#1077#1088' '#1090#1088#1077#1085#1080#1088#1086#1074#1086#1082
     Enabled = False
     TabOrder = 2
   end
   object CreateNewExercise: TButton
-    Left = 104
+    Left = 64
     Top = 110
-    Width = 75
+    Width = 153
     Height = 25
-    Caption = 'CreateNewExercise'
+    Caption = #1052#1077#1085#1077#1076#1078#1077#1088' '#1091#1087#1088#1072#1078#1085#1077#1085#1080#1081
     Enabled = False
     TabOrder = 3
   end
   object ShowTheStatistics: TButton
-    Left = 104
+    Left = 64
     Top = 141
-    Width = 75
+    Width = 153
     Height = 25
-    Caption = 'ShowTheStatistics'
+    Caption = #1057#1090#1072#1090#1080#1089#1090#1080#1082#1072
     Enabled = False
     TabOrder = 4
   end

@@ -1,0 +1,17 @@
+<main>
+	<exercise>
+		<name>Отжимания</name>
+		<description>Необходимо лечь на руки и поднимать руками все свое тело</description>
+		<isweighted>0</isweighted>
+	</exercise>
+	<exercise>
+		<name>Жим лежа</name>
+		<description>Необходимо лечь на скамью и отжимать от своей груди штангу</description>
+		<isweighted>1</isweighted>
+	</exercise>
+	<exercise>
+		<name>Вертикальный блок</name>
+		<description>Необходимо сесть на тренажер и опускать штангу к груди</description>
+		<isweighted>1</isweighted>
+	</exercise>
+</main>

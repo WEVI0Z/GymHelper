@@ -44,7 +44,7 @@ object Login: TLogin
     Width = 121
     Height = 21
     TabOrder = 0
-    Text = 'UserName'
+    TextHint = #1048#1084#1103
   end
   object Password: TEdit
     Left = 32
@@ -52,7 +52,7 @@ object Login: TLogin
     Width = 121
     Height = 21
     TabOrder = 1
-    Text = 'Password'
+    TextHint = #1055#1072#1088#1086#1083#1100
   end
   object CreateNewUser: TButton
     Left = 160
@@ -75,5 +75,13 @@ object Login: TLogin
   object UsersXML: TXMLDocument
     Left = 160
     Top = 128
+  end
+  object DefExsXML: TXMLDocument
+    Active = True
+    FileName = 
+      'D:\Programming Projects\'#1050#1091#1088#1089#1072#1095'\WorkOut\Win32\Debug\default exerc' +
+      'ises.xml'
+    Left = 160
+    Top = 80
   end
 end

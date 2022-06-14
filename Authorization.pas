@@ -17,6 +17,7 @@ type
     PasswordLabel: TLabel;
     LogStatus: TLabel;
     UsersXML: TXMLDocument;
+    DefExsXML: TXMLDocument;
     procedure EnterTheProfileClick(Sender: TObject);
     procedure CreateNewUserClick(Sender: TObject);
   private
@@ -27,24 +28,44 @@ type
 var
   users: IXMLNodeList;
   Login: TLogin;
+  userId: integer;
 
 implementation
 
 uses
-  XMLParse;
+  XMLParse, MainMenu;
 
 {$R *.dfm}
 
 function getUsers(XMLDoc : TXMLDocument) : IXMLNodeList;
+begin
+  XMLDoc.LoadFromFile('users.xml');
+  getUsers := XMLDoc.DocumentElement.childNodes;
+end;
+
+procedure generateTheDefExs(XMLDoc: TXMLDocument);
+var
+  i: integer;
+begin
+  setLength(MainMenu.defaultExercises, XMLDoc.DocumentElement.ChildNodes.Count);
+
+  for i := 0 to length(MainMenu.defaultExercises) - 1 do
   begin
-    XMLDoc.LoadFromFile('users.xml');
-    getUsers := XMLDoc.DocumentElement.childNodes;
+    MainMenu.defaultExercises[i].Name := XMLDoc.DocumentElement.ChildNodes[i].ChildNodes['name'].Text;
+    MainMenu.defaultExercises[i].Description := XMLDoc.DocumentElement.ChildNodes[i].ChildNodes['description'].Text;
+    if XMLDoc.DocumentElement.ChildNodes[i].ChildNodes['isweighted'].Text = '1' then
+      MainMenu.defaultExercises[i].IsWeighted := True
+    else
+      MainMenu.defaultExercises[i].IsWeighted := False
   end;
+end;
 
 procedure TLogin.CreateNewUserClick(Sender: TObject);
 
-var i: integer;
+var i, j: integer;
     check: boolean;
+    currentUser: IXMLNode;
+    currentExs : IXMLNode;
 
 begin
   check := False;
@@ -58,14 +79,37 @@ begin
     LogStatus.Caption := 'Имя занято'
   else
   begin
+    logStatus.Visible := True;
     logStatus.Caption := 'Новый пользователь создан';
-  
+
     UsersXML.DocumentElement.AddChild('user');
-    UsersXML.DocumentElement.ChildNodes.Last.Attributes['id'] := intToStr(UsersXML.DocumentElement.ChildNodes.Count);
-    UsersXML.DocumentElement.childNodes.Last.AddChild('username');
-    UsersXML.DocumentElement.childNodes.Last.ChildNodes['username'].Text := UserName.Text;
-    UsersXML.DocumentElement.childNodes.Last.AddChild('password');
-    UsersXML.DocumentElement.childNodes.Last.ChildNodes['password'].Text := Password.Text;
+
+    currentUser := UsersXML.DocumentElement.ChildNodes.Last;
+    currentUser.Attributes['id'] := intToStr(UsersXML.DocumentElement.ChildNodes.Count);
+
+    currentUser.AddChild('username');
+    currentUser.ChildNodes['username'].Text := UserName.Text;
+    currentUser.AddChild('password');
+    currentUser.ChildNodes['password'].Text := Password.Text;
+
+    generateTheDefExs(DefExsXML);
+    currentUser.AddChild('exercises');
+
+    for j := 0 to length(MainMenu.defaultExercises) - 1 do
+    begin
+      currentUser.ChildNodes['exercises'].AddChild('exercise');
+      currentExs := currentUser.ChildNodes['exercises'].ChildNodes.Last;
+
+      currentExs.Attributes['id'] := j + 1;
+
+      currentExs.AddChild('name');
+      currentExs.ChildNodes['name'].Text := MainMenu.defaultExercises[j].Name;
+      currentExs.AddChild('description');
+      currentExs.ChildNodes['description'].Text := MainMenu.defaultExercises[j].Description;
+      currentExs.AddChild('isweighted');
+      currentExs.ChildNodes['isweighted'].Text := MainMenu.defaultExercises[j].IsWeighted.ToString(False);
+    end;
+
     UsersXML.SaveToFile('users.xml');
   end;
 end;
@@ -86,6 +130,12 @@ begin
     if (enteredUser = users[i].ChildNodes[0].text) and (enteredPassword = users[i].ChildNodes[1].text) then
     begin
       Authorization.Login.close;
+      MainMenu.Menu.EnterTheTraining.Enabled := True;
+      MainMenu.Menu.CreateNewTraining.Enabled := True;
+      MainMenu.Menu.CreateNewExercise.Enabled := True;
+      MainMenu.Menu.ShowTheStatistics.Enabled := True;
+      MainMenu.Menu.LoginCautionMessage.Visible := False;
+      userId := i;
       break
     end
     else
