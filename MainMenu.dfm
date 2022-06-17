@@ -1,8 +1,10 @@
 object Menu: TMenu
   Left = 0
   Top = 0
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
   Caption = #1043#1083#1072#1074#1085#1072#1103
-  ClientHeight = 193
+  ClientHeight = 198
   ClientWidth = 278
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -10,7 +12,6 @@ object Menu: TMenu
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   Position = poDesktopCenter
   PixelsPerInch = 96
   TextHeight = 13
@@ -64,6 +65,7 @@ object Menu: TMenu
     Caption = #1052#1077#1085#1077#1076#1078#1077#1088' '#1091#1087#1088#1072#1078#1085#1077#1085#1080#1081
     Enabled = False
     TabOrder = 3
+    OnClick = CreateNewExerciseClick
   end
   object ShowTheStatistics: TButton
     Left = 64

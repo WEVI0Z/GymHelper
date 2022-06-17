@@ -28,7 +28,6 @@ type
 var
   users: IXMLNodeList;
   Login: TLogin;
-  userId: integer;
 
 implementation
 
@@ -54,9 +53,9 @@ begin
     MainMenu.defaultExercises[i].Name := XMLDoc.DocumentElement.ChildNodes[i].ChildNodes['name'].Text;
     MainMenu.defaultExercises[i].Description := XMLDoc.DocumentElement.ChildNodes[i].ChildNodes['description'].Text;
     if XMLDoc.DocumentElement.ChildNodes[i].ChildNodes['isweighted'].Text = '1' then
-      MainMenu.defaultExercises[i].IsWeighted := True
+      MainMenu.defaultExercises[i].IsWeighted := 'True'
     else
-      MainMenu.defaultExercises[i].IsWeighted := False
+      MainMenu.defaultExercises[i].IsWeighted := 'False';
   end;
 end;
 
@@ -65,11 +64,12 @@ procedure TLogin.CreateNewUserClick(Sender: TObject);
 var i, j: integer;
     check: boolean;
     currentUser: IXMLNode;
-    currentExs : IXMLNode;
+    currentExs: IXMLNode;
 
 begin
   check := False;
   UsersXML.LoadFromFile('users.xml');
+  DefExsXML.LoadFromFile('default exercises.xml');
 
   for i := 0 to UsersXML.DOMDocument.childNodes.length - 1 do
     if UserName.Text = UsersXML.DocumentElement.ChildNodes[i].ChildNodes['username'].Text then
@@ -107,8 +107,13 @@ begin
       currentExs.AddChild('description');
       currentExs.ChildNodes['description'].Text := MainMenu.defaultExercises[j].Description;
       currentExs.AddChild('isweighted');
-      currentExs.ChildNodes['isweighted'].Text := MainMenu.defaultExercises[j].IsWeighted.ToString(False);
+//      currentExs.ChildNodes['isweighted'].Text := MainMenu.defaultExercises[j].IsWeighted.ToString(False);
+      if MainMenu.defaultExercises[j].IsWeighted = 'True' then
+        currentExs.ChildNodes['isweighted'].Text := 'True'
+      else
+        currentExs.ChildNodes['isweighted'].Text := 'False'
     end;
+
 
     UsersXML.SaveToFile('users.xml');
   end;
@@ -135,7 +140,13 @@ begin
       MainMenu.Menu.CreateNewExercise.Enabled := True;
       MainMenu.Menu.ShowTheStatistics.Enabled := True;
       MainMenu.Menu.LoginCautionMessage.Visible := False;
-      userId := i;
+      MainMenu.UserID := i;
+
+      usersXML.LoadFromFile('users.xml');
+
+      MainMenu.Menu.UserName.Caption := UsersXML.DocumentElement.ChildNodes[i].ChildNodes['username'].Text;
+      MainMenu.Menu.UserName.Visible := True;
+
       break
     end
     else

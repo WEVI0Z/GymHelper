@@ -10,7 +10,7 @@ type
   TExercise = record
     Name: String;
     Description: String;
-    IsWeighted: boolean;
+    IsWeighted: String;
   end;
   TMenu = class(TForm)
     Login: TButton;
@@ -21,6 +21,7 @@ type
     CreateNewExercise: TButton;
     ShowTheStatistics: TButton;
     procedure LoginClick(Sender: TObject);
+    procedure CreateNewExerciseClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -30,18 +31,23 @@ type
 var
   Menu: TMenu;
   defaultExercises: array of TExercise;
+  UserID: integer;
 
 implementation
 
 uses
-  Authorization;
+  Authorization, Exercises;
 
 {$R *.dfm}
+
+procedure TMenu.CreateNewExerciseClick(Sender: TObject);
+begin
+  Exercises.Actions.Show;
+end;
 
 procedure TMenu.LoginClick(Sender: TObject);
 begin
   Authorization.Login.Show;
   Authorization.Login.LogStatus.Visible := False;
 end;
-
 end.

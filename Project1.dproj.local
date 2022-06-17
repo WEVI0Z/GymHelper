@@ -1,22 +1,64 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899.12.30 00:00:00.000.337,=D:\Programming Projects\Курсач\WorkOut\defaultexercises.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.772,D:\Programming Projects\Курсач\WorkOut\Unit1.dfm=D:\Programming Projects\Курсач\WorkOut\Authorization.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.039,C:\Users\wevio\Documents\Embarcadero\Studio\Projects\Project1.dproj=D:\Programming Projects\Курсач\WorkOut\Project1.dproj</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.128,D:\Programming Projects\Курсач\WorkOut\XMLParse.pas=D:\Programming Projects\Курсач\WorkOut\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.366,D:\Programming Projects\Курсач\WorkOut\MainMenu.pas=D:\Programming Projects\Курсач\WorkOut\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.366,D:\Programming Projects\Курсач\WorkOut\MainMenu.dfm=D:\Programming Projects\Курсач\WorkOut\Unit1.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.697,=D:\Programming Projects\Курсач\WorkOut\defaultexercises.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.667,=D:\Programming Projects\Курсач\WorkOut\defaultexercises.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.037,=C:\Users\wevio\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.772,D:\Programming Projects\Курсач\WorkOut\Unit1.pas=D:\Programming Projects\Курсач\WorkOut\Authorization.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.981,=D:\Programming Projects\Курсач\WorkOut\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.842,=D:\Programming Projects\Курсач\WorkOut\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.202,D:\Programming Projects\GymHelper\Unit1.pas=D:\Programming Projects\GymHelper\ExsEditing.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.772,D:\Programming Projects\Курсач\WorkOut\Authorization.pas=D:\Programming Projects\Курсач\WorkOut\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.763,D:\Programming Projects\GymHelper\ExsEditing.dfm=D:\Programming Projects\GymHelper\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.146,=D:\Programming Projects\GymHelper\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.376,=D:\Programming Projects\GymHelper\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.148,=D:\Programming Projects\GymHelper\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.239,=D:\Programming Projects\GymHelper\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.642,D:\Programming Projects\GymHelper\ExsEditing.pas=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.266,=D:\Programming Projects\GymHelper\ExsEditing.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.734,D:\Programming Projects\GymHelper\ExsEditing.pas=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.485,=D:\Programming Projects\GymHelper\ExsEditing.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.033,D:\Programming Projects\GymHelper\ExsEditing.pas=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.763,D:\Programming Projects\GymHelper\ExsEditing.pas=D:\Programming Projects\GymHelper\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.537,D:\Programming Projects\GymHelper\ExsEditing.pas=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.420,D:\Programming Projects\GymHelper\Unit1.pas=D:\Programming Projects\GymHelper\Editing.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.211,=D:\Programming Projects\GymHelper\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.099,D:\Programming Projects\GymHelper\Unit1.pas=D:\Programming Projects\GymHelper\ExsEditing.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.529,=D:\Programming Projects\GymHelper\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.744,D:\Programming Projects\GymHelper\ExsCreation.dfm=D:\Programming Projects\GymHelper\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.039,D:\Programming Projects\Курсач\WorkOut\Project1.dproj=C:\Users\wevio\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.622,D:\Programming Projects\GymHelper\Unit1.pas=D:\Programming Projects\GymHelper\Editing.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.895,D:\Programming Projects\GymHelper\Unit1.pas=D:\Programming Projects\GymHelper\Exercises.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.926,D:\Programming Projects\GymHelper\Unit1.pas=D:\Programming Projects\GymHelper\ExsCreation.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.830,=D:\Programming Projects\GymHelper\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.391,=D:\Programming Projects\GymHelper\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.671,=D:\Programming Projects\GymHelper\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.619,D:\Programming Projects\GymHelper\Unit1.pas=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.748,D:\Programming Projects\GymHelper\Unit1.pas=D:\Programming Projects\GymHelper\ExsEditing.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.622,D:\Programming Projects\GymHelper\Unit1.dfm=D:\Programming Projects\GymHelper\Editing.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.177,D:\Programming Projects\GymHelper\ExsCreation.pas=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.708,D:\Programming Projects\GymHelper\ExsCreation.pas=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.744,D:\Programming Projects\GymHelper\ExsCreation.pas=D:\Programming Projects\GymHelper\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.366,D:\Programming Projects\Курсач\WorkOut\Unit1.dfm=D:\Programming Projects\Курсач\WorkOut\MainMenu.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.772,D:\Programming Projects\Курсач\WorkOut\Authorization.dfm=D:\Programming Projects\Курсач\WorkOut\Unit1.dfm</Transaction>
     <Transaction>1899.12.30 00:00:00.000.632,D:\Programming Projects\Курсач\WorkOut\XMLParse.pas=</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.675,C:\Users\wevio\Documents\Embarcadero\Studio\Projects\Unit1.dfm=D:\Programming Projects\Курсач\WorkOut\Unit1.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.675,C:\Users\wevio\Documents\Embarcadero\Studio\Projects\Unit1.pas=D:\Programming Projects\Курсач\WorkOut\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.675,D:\Programming Projects\Курсач\WorkOut\Unit1.dfm=C:\Users\wevio\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.981,=D:\Programming Projects\Курсач\WorkOut\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.675,D:\Programming Projects\Курсач\WorkOut\Unit1.pas=C:\Users\wevio\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.366,D:\Programming Projects\Курсач\WorkOut\Unit1.pas=D:\Programming Projects\Курсач\WorkOut\MainMenu.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.128,D:\Programming Projects\Курсач\WorkOut\Unit1.pas=D:\Programming Projects\Курсач\WorkOut\XMLParse.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.037,=C:\Users\wevio\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.170,=C:\Users\wevio\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.842,=D:\Programming Projects\Курсач\WorkOut\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.697,=D:\Programming Projects\Курсач\WorkOut\defaultexercises.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.926,D:\Programming Projects\GymHelper\Unit1.dfm=D:\Programming Projects\GymHelper\ExsCreation.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.895,D:\Programming Projects\GymHelper\Unit1.dfm=D:\Programming Projects\GymHelper\Exercises.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.275,=D:\Programming Projects\GymHelper\Editing.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.099,D:\Programming Projects\GymHelper\Unit1.dfm=D:\Programming Projects\GymHelper\ExsEditing.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.748,D:\Programming Projects\GymHelper\Unit1.dfm=D:\Programming Projects\GymHelper\ExsEditing.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.202,D:\Programming Projects\GymHelper\Unit1.dfm=D:\Programming Projects\GymHelper\ExsEditing.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.420,D:\Programming Projects\GymHelper\Unit1.dfm=D:\Programming Projects\GymHelper\Editing.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.099,D:\Programming Projects\GymHelper\Editing.pas=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.667,=D:\Programming Projects\Курсач\WorkOut\defaultexercises.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.337,=D:\Programming Projects\Курсач\WorkOut\defaultexercises.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.065,D:\Programming Projects\GymHelper\Editing.pas=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.078,D:\Programming Projects\GymHelper\Editing.pas=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.118,=D:\Programming Projects\GymHelper\Editing.pas</Transaction>
+    <Transaction>2022.06.16 11:46:19.227,=D:\Programming Projects\GymHelper\ExsEditing.pas</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="MainMenu.pas"/>
@@ -24,5 +66,9 @@
     <File Path="Authorization.pas"/>
     <File Path="Authorization.dfm"/>
     <File Path="defaultexercises.pas"/>
+    <File Path="Exercises.pas"/>
+    <File Path="Exercises.dfm"/>
+    <File Path="ExsEditing.pas"/>
+    <File Path="ExsEditing.dfm"/>
   </ProjectSortOrder>
 </BorlandProject>
