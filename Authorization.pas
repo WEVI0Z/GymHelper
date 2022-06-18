@@ -8,6 +8,18 @@ uses
   Xml.XMLDoc;
 
 type
+  Exercise = record
+    Name : String;
+    Description : String;
+    IsWeighted : Boolean;
+  end;
+
+  UsersArr = record
+    Name : String;
+    Password : String;
+    Exercises: array of exercise;
+  end;
+
   TLogin = class(TForm)
     UserName: TEdit;
     Password: TEdit;
@@ -26,8 +38,8 @@ type
   end;
 
 var
-  users: IXMLNodeList;
   Login: TLogin;
+  users: array of UsersArr;
 
 implementation
 
@@ -35,13 +47,6 @@ uses
   XMLParse, MainMenu;
 
 {$R *.dfm}
-
-function getUsers(XMLDoc : TXMLDocument) : IXMLNodeList;
-begin
-  XMLDoc.LoadFromFile('users.xml');
-  getUsers := XMLDoc.DocumentElement.childNodes;
-end;
-
 procedure generateTheDefExs(XMLDoc: TXMLDocument);
 var
   i: integer;
@@ -71,9 +76,10 @@ begin
   UsersXML.LoadFromFile('users.xml');
   DefExsXML.LoadFromFile('default exercises.xml');
 
-  for i := 0 to UsersXML.DOMDocument.childNodes.length - 1 do
-    if UserName.Text = UsersXML.DocumentElement.ChildNodes[i].ChildNodes['username'].Text then
-      check := True;
+//  if UsersXML.DOMDocument.childNodes.length <> 0 then
+    for i := 0 to UsersXML.DOMDocument.childNodes.length - 1 do
+      if UserName.Text = UsersXML.DocumentElement.ChildNodes[i].ChildNodes['username'].Text then
+        check := True;
 
   if check = True then
     LogStatus.Caption := 'Имя занято'
@@ -106,14 +112,13 @@ begin
       currentExs.ChildNodes['name'].Text := MainMenu.defaultExercises[j].Name;
       currentExs.AddChild('description');
       currentExs.ChildNodes['description'].Text := MainMenu.defaultExercises[j].Description;
+
       currentExs.AddChild('isweighted');
-//      currentExs.ChildNodes['isweighted'].Text := MainMenu.defaultExercises[j].IsWeighted.ToString(False);
       if MainMenu.defaultExercises[j].IsWeighted = 'True' then
         currentExs.ChildNodes['isweighted'].Text := 'True'
       else
         currentExs.ChildNodes['isweighted'].Text := 'False'
     end;
-
 
     UsersXML.SaveToFile('users.xml');
   end;
@@ -126,13 +131,13 @@ var
   i: integer;
 
 begin
-  users := getUsers(UsersXML);
+  usersXML.LoadFromFile('users.xml');
   enteredUser := Username.Text;
   enteredPassword := Password.Text;
 
-  for i := 0 to users.Count - 1 do
+  for i := 0 to usersXML.ChildNodes.Count - 1 do
   begin
-    if (enteredUser = users[i].ChildNodes[0].text) and (enteredPassword = users[i].ChildNodes[1].text) then
+    if (enteredUser = usersXML.ChildNodes[i].ChildNodes[0].text) and (enteredPassword = usersXML.ChildNodes[i].ChildNodes[1].text) then
     begin
       Authorization.Login.close;
       MainMenu.Menu.EnterTheTraining.Enabled := True;

@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Xml.xmldom, Xml.XMLIntf,
-  Xml.XMLDoc, MSXML_TLB;
+  Xml.XMLDoc;
 
 type
   TEditForm = class(TForm)
@@ -26,6 +26,8 @@ type
 var
   EditForm: TEditForm;
 
+
+
 implementation
 
 uses Authorization, MainMenu, Exercises;
@@ -34,10 +36,9 @@ uses Authorization, MainMenu, Exercises;
 procedure TEditForm.SaveButtonClick(Sender: TObject);
 
   var exsNode: IXMLNode;
-  var xml: string;
 
 begin
-  UsersXML.LoadFromXML(Authorization.Login.UsersXML.XML.Text);
+  Authorization.Login.UsersXML.LoadFromFile('users.xml');
 
   exsNode := Authorization.Login.UsersXML.DocumentElement.ChildNodes[UserID].ChildNodes['exercises'];
 
@@ -49,11 +50,7 @@ begin
   else
     exsNode.ChildNodes[ButtonID].ChildNodes['isweighted'].Text := 'False';
 
-  UsersXML.SaveToFile('users.xml');
-
-  xml := Authorization.Login.UsersXML.XML.Text;
-
-  UsersXML.SaveToXML(XML);
+  Authorization.Login.UsersXML.SaveToFile('users.xml');
 
   Exercises.Actions.Close;
   ExsEditing.EditForm.Close;

@@ -43,9 +43,8 @@ object EditForm: TEditForm
     Height = 25
     Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100
     TabOrder = 1
-    OnClick = SaveButtonClick
   end
-  object Description: TEdit
+  object Desciption: TEdit
     Left = 24
     Top = 85
     Width = 241
@@ -60,11 +59,5 @@ object EditForm: TEditForm
     Height = 23
     TabOrder = 3
     TextHint = #1053#1072#1079#1074#1072#1085#1080#1077
-  end
-  object UsersXML: TXMLDocument
-    Active = True
-    FileName = 'D:\Programming Projects\GymHelper\users.xml'
-    Left = 248
-    Top = 112
   end
 end

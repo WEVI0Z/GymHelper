@@ -8,7 +8,7 @@ uses
   Authorization in 'Authorization.pas' {Login},
   defaultexercises in 'defaultexercises.pas',
   Exercises in 'Exercises.pas' {Actions},
-  Unit1 in 'Unit1.pas' {Form1};
+  ExsEditing in 'ExsEditing.pas' {EditForm};
 
 {$R *.res}
 
@@ -19,6 +19,6 @@ begin
   Application.CreateForm(TMenu, Menu);
   Application.CreateForm(TLogin, Login);
   Application.CreateForm(TActions, Actions);
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TEditForm, EditForm);
   Application.Run;
 end.

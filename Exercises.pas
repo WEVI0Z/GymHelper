@@ -9,10 +9,10 @@ uses
 
 type
   TActions = class(TForm)
-    UsersXML: TXMLDocument;
     ListOfTheExsLabel: TLabel;
     CreateNewExs: TButton;
     Button1: TButton;
+    UsersXML: TXMLDocument;
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
   private
@@ -62,7 +62,7 @@ begin
     buttons[i].Width := 30;
     buttons[i].Height := 30;
   end;
-
+  XML.Active := False;
 end;
 
 procedure TActions.Button1Click(Sender: TObject);
@@ -71,7 +71,7 @@ var
   i: Integer;
   exsNode: IXMLNode;
 begin
-  UsersXML.LoadFromFile('users.xml');
+  UsersXML.LoadFromXML(Authorization.Login.UsersXML.XML.Text);
 
   exsNode := UsersXML.DocumentElement.ChildNodes[UserID].ChildNodes['exercises'];
 
@@ -80,10 +80,12 @@ begin
   for i := 0 to length(buttons) - 1 do
     if buttons[i] = Sender then
       ButtonID := i;
-  ExsEditing.EditForm.Desciption.Text := exsNode.ChildNodes[ButtonID].ChildNodes['description'].Text;
+
+  ExsEditing.EditForm.Description.Text := exsNode.ChildNodes[ButtonID].ChildNodes['description'].Text;
   ExsEditing.EditForm.NameOfTheTraining.Text := exsNode.ChildNodes[ButtonID].ChildNodes['name'].Text;
-//  if exsNode.ChildNodes[ButtonID].ChildNodes['isweighted'].Text = 'True' then
-    ExsEditing.EditForm.IsWeightedCheck.Caption := exsNode.ChildNodes[ButtonID].ChildNodes['isweighted'].Text;
+
+  if exsNode.ChildNodes[ButtonID].ChildNodes['isweighted'].Text = 'True' then
+    ExsEditing.EditForm.IsWeightedCheck.Checked := True;
 end;
 
 procedure TActions.FormCreate(Sender: TObject);
@@ -91,7 +93,7 @@ procedure TActions.FormCreate(Sender: TObject);
 var i : integer;
 
 begin
-  DrawTheList(UsersXML);
+  DrawTheList(Authorization.Login.UsersXML);
 
   for i := 0 to length(buttons) - 1 do
     buttons[i].OnClick := Button1Click;

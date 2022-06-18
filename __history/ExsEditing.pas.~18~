@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Xml.xmldom, Xml.XMLIntf,
-  Xml.XMLDoc, MSXML_TLB;
+  Xml.XMLDoc;
 
 type
   TEditForm = class(TForm)
@@ -25,6 +25,10 @@ type
 
 var
   EditForm: TEditForm;
+  var CoDoc: TXMLDocument;
+  var Doc: IXMLDOMDocument;
+
+
 
 implementation
 

@@ -13,6 +13,7 @@ object Actions: TActions
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  Position = poDesktopCenter
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 15
@@ -39,9 +40,6 @@ object Actions: TActions
     Height = 25
     Caption = 'Button1'
     TabOrder = 1
-  end
-  object UsersXML: TXMLDocument
-    Active = True
-    Top = 456
+    OnClick = Button1Click
   end
 end

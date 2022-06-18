@@ -25,6 +25,10 @@ type
 
 var
   EditForm: TEditForm;
+  var CoDoc: CoDomDocument;
+  var Doc: ;
+
+
 
 implementation
 
