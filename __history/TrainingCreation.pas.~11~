@@ -1,0 +1,90 @@
+unit TrainingCreation;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons;
+
+type
+  TCreateTrainingForm = class(TForm)
+    NameOfTheTraining: TEdit;
+    ExsWrap: TScrollBox;
+    AddExs: TButton;
+    NameLabel: TLabel;
+    CreateTraining: TButton;
+    procedure AddExsClick(Sender: TObject);
+    procedure CreateTrainingClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  CreateTrainingForm: TCreateTrainingForm;
+  labels: array of TLabel;
+  buttons: array of TSpeedButton;
+  AddedExs: array of TLabel;
+
+implementation
+
+uses ExsAdding, Authorization, MainMenu;
+
+{$R *.dfm}
+
+
+
+procedure TCreateTrainingForm.AddExsClick(Sender: TObject);
+
+var i: integer;
+
+begin
+  ExsAdding.AddExsForm.Show;
+
+  setLength(labels, length(users[UserID].Exercises));
+  setLength(buttons, length(users[UserID].Exercises));
+  ExsAdding.AddExsForm.ExcercisesWrap.DestroyComponents;
+
+  for i := 0 to length(users[UserID].Exercises) - 1 do
+  begin
+    labels[i] := TLabel.Create(ExsAdding.AddExsForm.ExcercisesWrap);
+    labels[i].Parent := ExsAdding.AddExsForm.ExcercisesWrap;
+    labels[i].Top := 40 * (i);
+    labels[i].Left := 20;
+    labels[i].Caption := users[UserID].Exercises[i].Name;
+    labels[i].Width := 200;
+    labels[i].Height := 30;
+
+    buttons[i] := TSpeedButton.Create(ExsAdding.AddExsForm.ExcercisesWrap);
+    buttons[i].Parent := ExsAdding.AddExsForm.ExcercisesWrap;
+    buttons[i].Top := 40 * (i);
+    buttons[i].Left := 230;
+    buttons[i].Caption := '>';
+    buttons[i].Width := 30;
+    buttons[i].Height := 30;
+
+    if i = 0 then
+    begin
+      labels[i].Top := 5;
+      buttons[i].Top := 5;
+    end;
+  end;
+  for i := 0 to length(buttons) - 1 do
+    buttons[i].OnClick := ExsAdding.AddExsForm.TempButtonClick;
+
+  ExsAdding.AddExsForm.TempButton.Free;
+end;
+
+procedure TCreateTrainingForm.CreateTrainingClick(Sender: TObject);
+
+var i : integer;
+
+begin
+  setLength(users[UserID].Trainings, length(users[UserID].Trainings) + 1);
+
+  i := length(users[UserID].Trainings);
+
+end;
+
+end.

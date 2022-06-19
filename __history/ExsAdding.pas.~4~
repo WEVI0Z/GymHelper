@@ -1,0 +1,36 @@
+unit ExsAdding;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+
+type
+  TAddExsForm = class(TForm)
+    ExcercisesWrap: TScrollBox;
+    TempButton: TButton;
+    procedure TempButtonClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  AddExsForm: TAddExsForm;
+
+implementation
+
+uses TrainingCreation, Authorization;
+
+{$R *.dfm}
+
+procedure TAddExsForm.TempButtonClick(Sender: TObject);
+begin
+  ExsAdding.AddExsForm.Close;
+
+  TrainingCreation.CreateTrainingForm.ExsWrap.Create();
+end;
+
+end.

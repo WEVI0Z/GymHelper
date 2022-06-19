@@ -1,0 +1,31 @@
+object TrainingChooseForm: TTrainingChooseForm
+  Left = 0
+  Top = 0
+  Caption = 'TrainingChooseForm'
+  ClientHeight = 500
+  ClientWidth = 339
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object TrainingsWrap: TScrollBox
+    Left = 8
+    Top = 8
+    Width = 321
+    Height = 484
+    TabOrder = 0
+  end
+  object TempButton: TButton
+    Left = 254
+    Top = 467
+    Width = 75
+    Height = 25
+    Caption = 'TempButton'
+    TabOrder = 1
+  end
+end

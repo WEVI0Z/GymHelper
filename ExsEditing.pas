@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Xml.xmldom, Xml.XMLIntf,
-  Xml.XMLDoc, MSXML_TLB;
+  Xml.XMLDoc;
 
 type
   TEditForm = class(TForm)
@@ -16,7 +16,9 @@ type
     Description: TEdit;
     NameOfTheTraining: TEdit;
     UsersXML: TXMLDocument;
+    DeleteButton: TButton;
     procedure SaveButtonClick(Sender: TObject);
+    procedure DeleteButtonClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -31,33 +33,187 @@ implementation
 uses Authorization, MainMenu, Exercises;
 {$R *.dfm}
 
-procedure TEditForm.SaveButtonClick(Sender: TObject);
-
-  var exsNode: IXMLNode;
-  var xml: string;
+procedure ParseToXML(XMLDoc: TXMLDocument);
+var
+  i, j, k: Integer;
+  currentUser: IXMLNode;
+  currentExs: IXMLNode;
+  currentTraining: IXMLNode;
+  currentStat: IXMLNode;
 
 begin
-  UsersXML.LoadFromXML(Authorization.Login.UsersXML.XML.Text);
+  XMLDoc.LoadFromFile('users.xml');
+  XMLDoc.Active := True;
+  XMLDoc.XML.Clear;
+  XMLDoc.XML.Add('<main>');
+  XMLDoc.XML.Add('</main>');
+  XMLDoc.Active := True;
 
-  exsNode := Authorization.Login.UsersXML.DocumentElement.ChildNodes[UserID].ChildNodes['exercises'];
+  for i := 0 to length(users) - 1 do
+  begin
+    XMLDoc.DocumentElement.AddChild('user');
+    currentUser := XMLDoc.DocumentElement.ChildNodes.Last;
 
-  exsNode.ChildNodes[ButtonID].ChildNodes['name'].Text := NameOfTheTraining.Text;
-  exsNode.ChildNodes[ButtonID].ChildNodes['description'].Text := Description.Text;
+    currentUser.AddChild('username');
+    currentUser.AddChild('password');
+    currentUser.AddChild('exercises');
+    currentUser.AddChild('trainings');
+    currentUser.AddChild('stats');
 
-  if IsWeightedCheck.Checked = True then
-    exsNode.ChildNodes[ButtonID].ChildNodes['isweighted'].Text := 'True'
-  else
-    exsNode.ChildNodes[ButtonID].ChildNodes['isweighted'].Text := 'False';
+    currentUser.ChildNodes['username'].Text := users[i].Name;
+    currentUser.ChildNodes['password'].Text := users[i].Password;
 
-  UsersXML.SaveToFile('users.xml');
+    for j := 0 to length(users[i].Exercises) - 1 do
+    begin
+      currentUser.ChildNodes['exercises'].AddChild('exercise');
+      currentExs := currentUser.ChildNodes['exercises'].ChildNodes.Last;
 
-  xml := Authorization.Login.UsersXML.XML.Text;
+      currentExs.AddChild('name');
+      currentExs.AddChild('description');
+      currentExs.AddChild('isweighted');
 
-  UsersXML.SaveToXML(XML);
+      currentExs.ChildNodes['name'].Text := users[i].Exercises[j].Name;
+      currentExs.ChildNodes['description'].Text := users[i].Exercises[j].Description;
 
-  Exercises.Actions.Close;
+      if users[i].Exercises[j].IsWeighted = True then
+        currentExs.ChildNodes['isweighted'].Text := 'True'
+      else
+        currentExs.ChildNodes['isweighted'].Text := 'False';
+    end;
+
+    for j := 0 to length(users[i].Trainings) - 1 do
+    begin
+      currentUser.ChildNodes['trainings'].AddChild('training');
+      currentTraining := currentUser.ChildNodes['trainings'].ChildNodes.Last;
+
+      currentTraining.AddChild('name');
+      currentTraining.ChildNodes['name'].Text := users[i].Trainings[j].Name;
+
+      currentTraining.AddChild('exercises');
+
+      for k := 0 to length(users[i].Trainings[j].Exercises) - 1 do
+      begin
+        currentUser.ChildNodes['trainings'].ChildNodes.Last.ChildNodes['exercises'].AddChild('exercise');
+        currentExs := currentUser.ChildNodes['trainings'].ChildNodes.Last.ChildNodes['exercises'].ChildNodes.Last;
+
+        currentExs.AddChild('name');
+        currentExs.AddChild('description');
+        currentExs.AddChild('isweighted');
+
+        currentExs.ChildNodes['name'].Text := users[i].Trainings[j].Exercises[k].Name;
+        currentExs.ChildNodes['description'].Text := users[i].Trainings[j].Exercises[k].Description;
+
+        if users[i].Trainings[j].Exercises[k].IsWeighted = True then
+          currentExs.ChildNodes['isweighted'].Text := 'True'
+        else
+          currentExs.ChildNodes['isweighted'].Text := 'False';
+      end;
+    end;
+
+     for j := 0 to length(users[i].Stats) - 1 do
+     begin
+      currentUser.ChildNodes['stats'].AddChild('completedTraining');
+      currentStat := currentUser.ChildNodes['stats'].ChildNodes.Last;
+
+      currentStat.AddChild('name');
+      currentStat.AddChild('time');
+
+      currentStat.ChildNodes['name'].Text := users[i].Stats[j].Name;
+      currentStat.ChildNodes['date'].Text := users[i].Stats[j].Date;
+      currentStat.ChildNodes['time'].Text := intToStr(users[i].Stats[j].Time);
+
+      currentStat.AddChild('completedExercises');
+
+      for k := 0 to length(users[i].Stats[j].Exercises) - 1 do
+      begin
+        currentUser.ChildNodes['stats'].ChildNodes.Last.ChildNodes['completedExercises'].AddChild('exercise');
+        currentExs := currentUser.ChildNodes['stats'].ChildNodes.Last.ChildNodes['completedExercises'].ChildNodes.Last;
+
+        currentExs.AddChild('name');
+        currentExs.AddChild('description');
+        currentExs.AddChild('isweighted');
+
+        currentExs.ChildNodes['name'].Text := users[i].Stats[j].Exercises[k].Name;
+        currentExs.ChildNodes['weight'].Text := intToStr(users[i].Stats[j].Exercises[k].Weight);
+        currentExs.ChildNodes['times'].Text := intToStr(users[i].Stats[j].Exercises[k].Times);
+      end;
+    end;
+  end;
+
+  XMLDoc.SaveToFile('users.xml');
+end;
+
+procedure DrawTheList();
+
+var i: Integer;
+
+begin
+  setLength(labels, length(users[UserID].Exercises));
+  setLength(buttons, length(users[UserID].Exercises));
+  Actions.ScrollBox1.DestroyComponents;
+
+  for i := 0 to length(users[UserID].Exercises) - 1 do
+  begin
+    labels[i] := TLabel.Create(Actions.ScrollBox1);
+    labels[i].Parent := Actions.ScrollBox1;
+    labels[i].Top := 40 * (i);
+    labels[i].Left := 20;
+    labels[i].Caption := users[UserID].Exercises[i].Name;
+    labels[i].Width := 200;
+    labels[i].Height := 30;
+
+    buttons[i] := TButton.Create(Actions.ScrollBox1);
+    buttons[i].Parent := Actions.ScrollBox1;
+    buttons[i].Top := 40 * (i);
+    buttons[i].Left := 230;
+    buttons[i].Caption := '>';
+    buttons[i].Width := 30;
+    buttons[i].Height := 30;
+
+    if i = 0 then
+    begin
+      labels[i].Top := 5;
+      buttons[i].Top := 5;
+    end;
+  end;
+  for i := 0 to length(buttons) - 1 do
+  buttons[i].OnClick := Actions.Button1Click;
+end;
+
+procedure TEditForm.DeleteButtonClick(Sender: TObject);
+
+var i : integer;
+
+begin
+  for i := buttonID to length(users[UserID].Exercises) - 2 do
+  begin
+    users[UserID].Exercises[ButtonID].Name := users[UserID].Exercises[ButtonID + 1].Name;
+    users[UserID].Exercises[ButtonID].Description := users[UserID].Exercises[ButtonID + 1].Description;
+    users[UserID].Exercises[ButtonID].IsWeighted := users[UserID].Exercises[ButtonID + 1].IsWeighted;
+  end;
+
+  setLength(users[UserID].Exercises, length(users[UserID].Exercises) - 1);
+
+  parseToXML(usersXML);
+
+  drawTheList();
   ExsEditing.EditForm.Close;
-  Exercises.Actions.Show;
+end;
+
+procedure TEditForm.SaveButtonClick(Sender: TObject);
+  var xml: string;
+      curExs: Exercise;
+
+begin
+  users[UserID].Exercises[ButtonID].Name := NameOfTheTraining.Text;
+  users[UserID].Exercises[ButtonID].Description := Description.Text;
+  users[UserID].Exercises[ButtonID].IsWeighted := IsWeightedCheck.Checked;
+
+  Exercises.labels[buttonID].Caption := users[UserID].Exercises[ButtonID].Name;
+
+  parseToXML(usersXML);
+
+  ExsEditing.EditForm.Close;
 end;
 
 end.

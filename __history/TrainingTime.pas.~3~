@@ -1,0 +1,38 @@
+unit TrainingTime;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+
+type
+  TTrainingTimeForm = class(TForm)
+    TimeLabel: TLabel;
+    Time: TEdit;
+    DateLabel: TLabel;
+    Date: TEdit;
+    ConfirmButton: TButton;
+    procedure ConfirmButtonClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  TrainingTimeForm: TTrainingTimeForm;
+
+implementation
+
+uses TrainingChoosing, ExsRealise, Authorization, MainMenu;
+
+{$R *.dfm}
+
+procedure TTrainingTimeForm.ConfirmButtonClick(Sender: TObject);
+begin
+  users[UserID].Stats[ExsRealise.ExsRealiseForm.currentStat].Time := strToInt(Time.Text);
+  users[UserID].Stats[ExsRealise.ExsRealiseForm.currentStat].Date := Date.Text;
+end;
+
+end.

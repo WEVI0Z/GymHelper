@@ -1,0 +1,31 @@
+unit TrainingTime;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+
+type
+  TTrainingTimeForm = class(TForm)
+    TimeLabel: TLabel;
+    Time: TEdit;
+    DateLabel: TLabel;
+    Date: TEdit;
+    ConfirmButton: TButton;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  TrainingTimeForm: TTrainingTimeForm;
+
+implementation
+
+uses TrainingChoosing, ExsRealis, Authorization, MainMenu;
+
+{$R *.dfm}
+
+end.
