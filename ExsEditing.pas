@@ -148,36 +148,36 @@ procedure DrawTheList();
 var i: Integer;
 
 begin
-  setLength(labels, length(users[UserID].Exercises));
-  setLength(buttons, length(users[UserID].Exercises));
+  setLength(exercises.Actions.labels, length(users[UserID].Exercises));
+  setLength(exercises.Actions.buttons, length(users[UserID].Exercises));
   Actions.ScrollBox1.DestroyComponents;
 
   for i := 0 to length(users[UserID].Exercises) - 1 do
   begin
-    labels[i] := TLabel.Create(Actions.ScrollBox1);
-    labels[i].Parent := Actions.ScrollBox1;
-    labels[i].Top := 40 * (i);
-    labels[i].Left := 20;
-    labels[i].Caption := users[UserID].Exercises[i].Name;
-    labels[i].Width := 200;
-    labels[i].Height := 30;
+    exercises.Actions.labels[i] := TLabel.Create(Actions.ScrollBox1);
+    exercises.Actions.labels[i].Parent := Actions.ScrollBox1;
+    exercises.Actions.labels[i].Top := 40 * (i);
+    exercises.Actions.labels[i].Left := 20;
+    exercises.Actions.labels[i].Caption := users[UserID].Exercises[i].Name;
+    exercises.Actions.labels[i].Width := 200;
+    exercises.Actions.labels[i].Height := 30;
 
-    buttons[i] := TButton.Create(Actions.ScrollBox1);
-    buttons[i].Parent := Actions.ScrollBox1;
-    buttons[i].Top := 40 * (i);
-    buttons[i].Left := 230;
-    buttons[i].Caption := '>';
-    buttons[i].Width := 30;
-    buttons[i].Height := 30;
+    exercises.Actions.buttons[i] := TButton.Create(Actions.ScrollBox1);
+    exercises.Actions.buttons[i].Parent := Actions.ScrollBox1;
+    exercises.Actions.buttons[i].Top := 40 * (i);
+    exercises.Actions.buttons[i].Left := 230;
+    exercises.Actions.buttons[i].Caption := '>';
+    exercises.Actions.buttons[i].Width := 30;
+    exercises.Actions.buttons[i].Height := 30;
 
     if i = 0 then
     begin
-      labels[i].Top := 5;
-      buttons[i].Top := 5;
+      exercises.Actions.labels[i].Top := 5;
+      exercises.Actions.buttons[i].Top := 5;
     end;
   end;
-  for i := 0 to length(buttons) - 1 do
-  buttons[i].OnClick := Actions.Button1Click;
+  for i := 0 to length(exercises.Actions.buttons) - 1 do
+  exercises.Actions.buttons[i].OnClick := Actions.Button1Click;
 end;
 
 procedure TEditForm.DeleteButtonClick(Sender: TObject);
@@ -202,14 +202,13 @@ end;
 
 procedure TEditForm.SaveButtonClick(Sender: TObject);
   var xml: string;
-      curExs: Exercise;
 
 begin
   users[UserID].Exercises[ButtonID].Name := NameOfTheTraining.Text;
   users[UserID].Exercises[ButtonID].Description := Description.Text;
   users[UserID].Exercises[ButtonID].IsWeighted := IsWeightedCheck.Checked;
 
-  Exercises.labels[buttonID].Caption := users[UserID].Exercises[ButtonID].Name;
+  exercises.Actions.labels[buttonID].Caption := NameOfTheTraining.Text;
 
   parseToXML(usersXML);
 
