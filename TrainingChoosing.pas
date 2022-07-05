@@ -42,13 +42,24 @@ begin
 
   ExsRealise.ExsRealiseForm.Caption := users[UserID].Trainings[TargetID].Name;
   ExsRealise.ExsRealiseForm.NameOfTheExercisesLabel.Caption := users[UserID].Trainings[TargetID].Exercises[0].Name;
+  ExsRealise.ExsRealiseForm.NameOfTheExercisesLabel.WordWrap := True;
 
   if users[UserID].Trainings[TargetID].Exercises[0].IsWeighted = False then
   begin
     exsRealise.ExsRealiseForm.Weight.Visible := False;
     exsRealise.ExsRealiseForm.WeightLabel.Visible := False;
     exsRealise.ExsRealiseForm.Weight.Text := '0';
-    exsRealise.ExsRealiseForm.Height := 120;
+    exsRealise.ExsRealiseForm.Height := 180;
+    exsRealise.ExsRealiseForm.Description.Width := 155;
+    exsRealise.ExsRealiseForm.Description.Caption := users[UserID].Trainings[TargetID].Exercises[0].Description;
+    exsRealise.ExsRealiseForm.Description.Top := 89;
+  end
+  else
+  begin
+    exsRealise.ExsRealiseForm.Height := 220;
+    exsRealise.ExsRealiseForm.Description.Width := 155;
+    exsRealise.ExsRealiseForm.Description.Caption := users[UserID].Trainings[TargetID].Exercises[0].Description;
+    exsRealise.ExsRealiseForm.Description.Top := 129;
   end;
 
   ExsRealise.ExsRealiseForm.currentID := 0;

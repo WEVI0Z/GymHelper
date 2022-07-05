@@ -182,14 +182,21 @@ end;
 
 procedure TEditForm.DeleteButtonClick(Sender: TObject);
 
-var i : integer;
+var i, j : integer;
 
 begin
-  for i := buttonID to length(users[UserID].Exercises) - 2 do
+  j := 0;
+
+  for i := 0 to length(users[UserID].Exercises) - 1 do
   begin
-    users[UserID].Exercises[ButtonID].Name := users[UserID].Exercises[ButtonID + 1].Name;
-    users[UserID].Exercises[ButtonID].Description := users[UserID].Exercises[ButtonID + 1].Description;
-    users[UserID].Exercises[ButtonID].IsWeighted := users[UserID].Exercises[ButtonID + 1].IsWeighted;
+    if i <> ButtonID then
+    begin
+      users[UserID].Exercises[j].Name := users[UserID].Exercises[i].Name;
+      users[UserID].Exercises[j].Description := users[UserID].Exercises[i].Description;
+      users[UserID].Exercises[j].IsWeighted := users[UserID].Exercises[i].IsWeighted;
+
+      inc(j)
+    end;
   end;
 
   setLength(users[UserID].Exercises, length(users[UserID].Exercises) - 1);

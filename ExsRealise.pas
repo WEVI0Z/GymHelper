@@ -14,6 +14,7 @@ type
     Weight: TEdit;
     WeightLabel: TLabel;
     Next: TButton;
+    Description: TLabel;
     procedure NextClick(Sender: TObject);
   private
     { Private declarations }
@@ -47,23 +48,30 @@ begin
 
     Times.Text := '';
     Weight.Text := '';
+    Description.Caption := users[UserID].Trainings[TrainingChoosing.TrainingChooseForm.targetID].Exercises[CurrentID].Description;
 
     if users[UserID].Trainings[TrainingChoosing.TrainingChooseForm.targetID].Exercises[CurrentID].IsWeighted = False then
     begin
       Weight.Visible := False;
       Weight.Text := '0';
-      ExsRealiseForm.Height := 120;
+      ExsRealiseForm.Height := 180;
       WeightLabel.Visible := False;
+      Description.Top := 89;
+      Description.Width := 155
     end
     else
     begin
       Weight.Visible := True;
-      ExsRealiseForm.Height := 160;
+      ExsRealiseForm.Height := 220;
       WeightLabel.Visible := True;
+      Description.Top := 129;
+      Description.Width := 155
     end;
   end
   else
   begin
+    Times.Text := '';
+    Weight.Text := '';
     ExsRealise.ExsRealiseForm.Close;
     TrainingTime.TrainingTimeForm.Show;
     TrainingTime.TrainingTimeForm.Time.Text := '';
